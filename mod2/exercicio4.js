@@ -38,10 +38,11 @@ const animals = ['macaco', 'tucano', 'elefante', 'pavão', 'hipopótamo'];
 
 const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43];
 let soma = 0
+let limit = 400
 for(let i = 0; i< randomNumbers.length; i++){
   soma += randomNumbers[i];
-  if(soma >= 400){
-    console.log(`"A soma ultrapassou 400. Até aqui, o valor atual é ${soma}."`);
+  if(soma >= limit){
+    console.log(`"A soma ultrapassou ${limit}. Até aqui, o valor atual é ${soma}."`);
     break;
   }    
 }
@@ -59,7 +60,7 @@ const sentence = ['A', 'certeza', 'dúvida', 'é', 'o', 'princípio', 'da', 'sab
 let frase = ''
 for(let i = 0; i < sentence.length; i ++){
   if(sentence[i] != 'certeza'){
-    frase += ' ' + sentence[i]
+    frase +=` ${sentence[i]}`
   }
 
 }
@@ -83,33 +84,35 @@ console.log(frase)
 const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS', 97, true, 'Git', 11, 'sticker', false, 'GitHub', true, null];
 let str = 0
 let bool = 0
+let totalX = 0
 let fala = ''
 let string = []
 
-
-
 for(let i = 0; i< randomValues.length; i++){ 
-
+  
   const type = typeof randomValues[i];
   const typestring = type === 'string';
   const typeboolean = type === 'boolean';
 
-  if(typestring ){  
-    str++
-    if(str <= 4)    
-    string.push(randomValues[i])
-    console.log(string.join(', ').replace(', G',' e G'))   
-
-  } else if( typeboolean ){
-    bool++    
+  if(str === 4){
+    break
   }
+  if(typestring ){         
+    str++
+    string.push(randomValues[i])       
+  } else if( typeboolean ){
+    bool++       
+  }
+  totalX++
 }
 
+const ulItem = string[string.length - 1]
+let itemString = string.join(', ').replace(`, ${ulItem}`, ` e ${ulItem}`)
+
 console.log(`" 3 informações sobre o array randomValues:
-    - As primeiras 4 strings são ${string.join(', ').replace(', G', ' e G')};
+    - As primeiras 4 strings são ${itemString};
     - Até que as primeiras 4 strings fossem iteradas, ${bool} booleans foram iterados;
-    - O array foi iterado por ${str + bool} vezes.
-"`)
+    - O array foi iterado por ${totalX} vezes."`)
 
 
 /*
@@ -121,8 +124,7 @@ console.log(`" 3 informações sobre o array randomValues:
   - Se o tipo da bebida é água, atribua à uma variável a mensagem "Substância 
     química cujas moléculas são formadas por dois átomos de hidrogênio e um de 
     oxigênio.";
-  - Se o tipo da bebida é refrigerante, a mensagem "Bebida não alcoólica e não 
-    fermentada, fabricada industrialmente, à base de água mineral e açúcar." 
+  - Se o tipo da bebida é refrigerante, a mensagem "Bebida não alcoólica e não fermentada, fabricada industrialmente, à base de água mineral e açúcar." 
     deve ser armazenada;
   - Se é suco, atribua a mensagem "Bebida produzida do líquido extraído de 
     frutos.";
@@ -132,7 +134,21 @@ console.log(`" 3 informações sobre o array randomValues:
     da bebida além da que você escolheu.
 */
 
-// const drinkType
+const drinkType = 'lama'
+switch(drinkType){
+  case 'suco':
+    console.log("Bebida produzida do líquido extraído defrutos.");
+    break;
+  case 'refrigerante':
+    console.log("Bebida não alcoólica e não fermentada, fabricada industrialmente, à base de água mineral e açúcar." );
+    break;
+  case 'água':
+    console.log("Substância química cujas moléculas são formadas por dois átomos de hidrogênio e um de oxigênio.");
+    break;
+  default:
+    console.log('Teste também as outras possibilidades de tipo da bebida além da que você escolheu.');
+    break;
+}
 
 /*
   07
@@ -151,3 +167,15 @@ const a = 2
 // } else {
 //   console.log('O valor de "a" é qualquer número, exceto 0 e 1')
 // }
+
+switch(a){
+  case 0:
+    console.log(`O valor de "a" é ${a}`);
+    break;
+  case 1:
+    console.log(`O valor de "a" é ${a}`);
+    break;
+  default:
+    console.log('O valor de "a" é qualquer número, exceto 0 e 1')
+
+}
