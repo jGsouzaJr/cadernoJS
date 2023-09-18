@@ -140,7 +140,6 @@ console.log(numerosImpares.sort())
 
 /*
   07
-
   - Forme uma frase com o array abaixo e exiba-a no console.
 */
 
@@ -174,9 +173,9 @@ const functions = [
   function () { return 'Índias' },
   function () { return 'Ocidentais.' }
 ]
+
 let sentence = ''
 for(let i = 0; i< functions.length; i++){
-  sentence +=  functions[i]() + ' ';
+  sentence +=`${functions[i]()} `;
 }
-
 console.log(sentence)
