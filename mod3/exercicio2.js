@@ -16,11 +16,10 @@
 // function convertToString (value) {
 //   return String(value)
 // }
-const consvertToString = frase => {
-  console.log(frase);
-}
+const consvertToString = value => String(value);
 
-consvertToString('Estou aprendendo cada dia mais!!')
+// console.log(typeof consvertToString('Estou aprendendo cada dia mais!!'))
+
 /*
   02
 
@@ -31,7 +30,7 @@ const quantCaract = qand => {
   console.log(qand.length);
 }
 
-quantCaract('Muito obrigado por tudo Jeová');
+// quantCaract('Muito obrigado por tudo Jeová');
 
 /*
   03
@@ -47,24 +46,30 @@ const letraMin = frase =>{
   console.log(frase.toLocaleLowerCase())
 }
 
-letraMin("CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO")
+// letraMin("CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO")
 /*
   04
 
   - Crie uma função que recebe 2 parâmetros: um caractere e uma string;
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
-const ondeEsta = (i, frase) => {
-  console.log(`Na frase '${frase}' a primeira letra ${i} é o index ${frase.indexOf(i)} e a última ocorrência é index ${frase.lastIndexOf(i)}!`)
+const ondeEsta = (i, string) => {
+  console.log(`Na frase '${string}' a primeira letra ${i} é o index ${string.indexOf(i)} e a última ocorrência é index ${string.lastIndexOf(i)}!`)
 }
 
-ondeEsta('a', 'Estou andando pela rua')
+// ondeEsta('a', 'Estou andando pela rua')
 /*
   05
 
   - Crie uma função que, ao ser invocada, retorna um boolean indicando se o item  
     passado por argumento existe no array (também passado por argumento).
 */
+
+const nomes = ['Jose', 'Geraldo', 'Cleyton', 'Debora', 'Rafael']
+const intemConsta = function(arr, item){
+   return arr.includes(item)
+}
+// console.log(intemConsta(nomes, 'Jose'))
 
 /*
   06
@@ -73,12 +78,30 @@ ondeEsta('a', 'Estou andando pela rua')
     argumentos em sua invocação;
 */
 
+const sobrenome = ['Souza', 'Herculano', 'Silva', 'Pedrili']
+let duo = []
+
+const concate = (arr1, arr2) =>{
+ duo = arr2.concat(arr1).sort()
+  return duo
+}
+
+// console.log(concate(nomes, sobrenome))
+// console.log(duo)
+
 /*
   07
 
   - Crie uma função que retorna o array passado como argumento em sua invocação,  
     mas com o último item removido.
 */
+const ulpop = (el) =>{
+  el.pop() 
+  return el
+}
+
+// console.log(ulpop(duo))
+
 
 /*
   08
@@ -86,6 +109,11 @@ ondeEsta('a', 'Estou andando pela rua')
   - Crie uma função que retorna se o valor passado como argumento em sua  
     invocação é null.
 */
+
+const itemNull = (el)=> el === null
+
+// console.log(itemNull(null))
+
 
 /*
   09
@@ -98,6 +126,19 @@ ondeEsta('a', 'Estou andando pela rua')
     foi exibido.
 */
 
+const funcCall = callback => {
+  callback()
+}
+
+const logNome = ()=>{
+  console.log('José Geraldo')
+}
+
+funcCall(logNome)
+
+
+
+
 /*
   10
 
@@ -109,6 +150,15 @@ ondeEsta('a', 'Estou andando pela rua')
     resulte no triplo de 33.
 */
 
+const callfunc = (valor, funcCallBack) =>{
+  return funcCallBack(valor)
+}
+
+const multTripe = number => number * 3
+
+// console.log(callfunc(33, multTripe))
+
+
 /*
   11
 
@@ -119,6 +169,14 @@ ondeEsta('a', 'Estou andando pela rua')
 */
 
 const numbers = [1, 2, 3]
+numbers.forEach((i, index, array)=>{
+  const position = index + 1;
+  const item = array.join(', ');
+
+  console.log(`"O ${position}º item do array [${item}] é ${i}."`);
+
+});
+
 
 /*
   12
@@ -131,10 +189,15 @@ const numbers = [1, 2, 3]
 const letters = ['v', 'e', 'p']
 let lettersCopy = []
 
-for (let i = 0; i < letters.length; i++) {
-  lettersCopy.push(letters[i])
-}
+// for (let i = 0; i < letters.length; i++) {
+//   lettersCopy.push(letters[i])
+// }
 
+letters.forEach((i)=>{
+  lettersCopy.push(i)
+})
+
+console.log(lettersCopy)
 /*
   13
 
@@ -164,6 +227,10 @@ const review = [
 
 let paragraphs = ''
 
+for(let i= 0; i<review.length; i++){
+  paragraphs += `<p>${review[i]}</p>`
+}
+
 section.innerHTML = paragraphs
 
 /*
@@ -186,3 +253,45 @@ section.innerHTML = paragraphs
     pelo restante da quantidade de pessoas que curtiram o post (além das duas  
     pessoas já mencionadas no início da mensagem).
 */
+
+// const curtir = (arr = []) => {
+//   const limit = 0
+//   if(arr.length === 0){
+//     return `'Nínguem curtiu isso'`
+//   } else if( arr.length === 1){
+//     for(let i = 0; i < arr.length; i++){
+//       return `'${arr[i]} curtiu isso'`
+//     }
+//   } else if (arr.length === 2 || arr.length === 3 ) {
+//     for(let i = 0; i < arr.length; i++){      
+//       return `'${arr.join(', ').replace(`', ${arr[arr.length-1]}'`, `' e ${arr[arr.length-1]}'`)} curtiram isso'`
+//     }
+//   }  else if (arr.length >= 4){
+//     const ultItem = arr[arr.length -1]
+//     return `'${arr.join(', ').replace(`', ${ultItem}'`, `' e ${ultItem}'`)} e mais X pessoas curtiram isso"`    
+//   }
+//   limit++
+// }
+
+const curtiu = (names = [])=>{
+  const um = names[0]
+  const dois = `${names[0]} e ${names[1]}` 
+  const tres = `${names[0]}, ${names[1]} e ${names[2]}` 
+
+  switch(names.length){
+    case 0:
+      return `"Ninguém curtiu isso"`;
+    case 1:
+      return `"${um} curtiu isso"`;
+    case 2:
+      return `"${dois}  curtiram isso"`;
+    case 3: 
+      return `"${tres} curtiram isso"`
+    default:
+    return `"${names[0]}, ${names[1]} e mais ${names.length - 2} pessoas curtiram isso"`
+  }
+}
+
+const inscritos = ['Júnior', 'Débora']
+
+console.log(curtiu(inscritos))
